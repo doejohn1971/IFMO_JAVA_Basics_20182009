@@ -31,312 +31,375 @@ package ru.ifmo.cet.javabasics;
  * Нужно ограничить возможность взятия бутылок натуральным число не более 99 бутылок за раз.
  */
 public class BottleSong {
-
+public int take;
+public int botle;
     public BottleSong(int bottleTakenAtOnce) {
-        //TODO
+
+            this.take=bottleTakenAtOnce;
+            this.botle=99;
+
+
     }
 
-    public String getBottleSongLyrics() {
+        public String getBottleSongLyrics() {
+        if(this.take>99||this.take<1) throw new IllegalArgumentException();
+        if(this.take==99) return "99 bottles of beer on the wall, 99 bottles of beer.\n" +
+                "Take ninety nine down and pass around, no more bottles of beer on the wall.\n" +
+                "No more bottles of beer on the wall, no more bottles of beer.\n" +
+                "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
+                String Lyrics="";
+                while (this.take < this.botle) {
+                    if(this.botle-this.take==1)  Lyrics+=this.botle + " bottles of beer on the wall, " + this.botle + " bottles of beer.\n" + "Take " + number(this.take) + " down and pass around, " + (this.botle = this.botle - this.take) + " bottle of beer on the wall.\n";
+                    else Lyrics+=this.botle + " bottles of beer on the wall, " + this.botle + " bottles of beer.\n" + "Take " + number(this.take) + " down and pass around, " + (this.botle = this.botle - this.take) + " bottles of beer on the wall.\n";
+                }
+                if(this.botle==1){Lyrics+="1 bottle of beer on the wall, 1 bottle of beer.\n"+"Take one down and pass around, no more bottles of beer on the wall.\n"; this.botle=0;}
+                if(Lyrics!=""&&this.botle==0){return Lyrics+"No more bottles of beer on the wall, no more bottles of beer.\n" +
+                        "Go to the store and buy some more, 99 bottles of beer on the wall.\n";}
+                if(Lyrics!=""&&this.botle!=0){return Lyrics + this.botle + " bottles of beer on the wall, " + this.botle + " bottles of beer.\n" + "Take " + number(this.botle) + " down and pass around, no more bottles of beer on the wall.\n"+"No more bottles of beer on the wall, no more bottles of beer.\n" +
+                        "Go to the store and buy some more, 99 bottles of beer on the wall.\n";}
+           throw new UnsupportedOperationException();
+        }
+
+    public static String number(int number){
+        switch (number) {
+            case 0: return "";
+            case 1: return "one";
+            case 2: return "two";
+            case 3: return "three";
+            case 4: return "four";
+            case 5: return "five";
+            case 6: return "six";
+            case 7: return "seven";
+            case 8: return "eight";
+            case 9: return "nine";
+            case 10: return "ten";
+            case 11: return "eleven";
+            case 12: return "twelve";
+            case 13: return "thirteen";
+            case 14: return "fourteen";
+            case 15: return "fifteen";
+            case 16: return "sixteen";
+            case 17: return "seventeen";
+            case 18: return "eighteen";
+            case 19: return "nineteen";
+            case 20: return "twenty";
+            default:
+                if(number/10==2) if(number%10!=0) return "twenty "+number(number%10); else return "twenty";
+                if(number/10==3) if(number%10!=0) return "thirty "+number(number%10);else return "thirty";
+                if(number/10==4) if(number%10!=0) return "forty "+number(number%10);else return "forty";
+                if(number/10==5) if(number%10!=0) return "fifty "+number(number%10);else return "fifty";
+                if(number/10==6) if(number%10!=0) return "sixty "+number(number%10);else return "sixty";
+                if(number/10==7) if(number%10!=0) return "seventy "+number(number%10);else return "seventy";
+                if(number/10==8) if(number%10!=0) return "eighty "+number(number%10);else return "eighty";
+                if(number/10==9) if(number%10!=0) return "ninety "+number(number%10);else return "ninety";
+        }
+        throw new UnsupportedOperationException();
+        }
+
+    }
+
+
+
         //TODO
 //        throw new UnsupportedOperationException();
-        return "99 bottles of beer on the wall, 99 bottles of beer.\n" +
-            "Take one down and pass around, 98 bottles of beer on the wall.\n" +
+//        return "99 bottles of beer on the wall, 99 bottles of beer.\n" +
+//            "Take one down and pass around, 98 bottles of beer on the wall.\n" +
+//
+//            "98 bottles of beer on the wall, 98 bottles of beer.\n" +
+//            "Take one down and pass around, 97 bottles of beer on the wall.\n" +
+//
+//            "97 bottles of beer on the wall, 97 bottles of beer.\n" +
+//            "Take one down and pass around, 96 bottles of beer on the wall.\n" +
+//
+//            "96 bottles of beer on the wall, 96 bottles of beer.\n" +
+//            "Take one down and pass around, 95 bottles of beer on the wall.\n" +
+//
+//            "95 bottles of beer on the wall, 95 bottles of beer.\n" +
+//            "Take one down and pass around, 94 bottles of beer on the wall.\n" +
+//
+//            "94 bottles of beer on the wall, 94 bottles of beer.\n" +
+//            "Take one down and pass around, 93 bottles of beer on the wall.\n" +
+//
+//            "93 bottles of beer on the wall, 93 bottles of beer.\n" +
+//            "Take one down and pass around, 92 bottles of beer on the wall.\n" +
+//
+//            "92 bottles of beer on the wall, 92 bottles of beer.\n" +
+//            "Take one down and pass around, 91 bottles of beer on the wall.\n" +
+//
+//            "91 bottles of beer on the wall, 91 bottles of beer.\n" +
+//            "Take one down and pass around, 90 bottles of beer on the wall.\n" +
+//
+//            "90 bottles of beer on the wall, 90 bottles of beer.\n" +
+//            "Take one down and pass around, 89 bottles of beer on the wall.\n" +
+//
+//            "89 bottles of beer on the wall, 89 bottles of beer.\n" +
+//            "Take one down and pass around, 88 bottles of beer on the wall.\n" +
+//
+//            "88 bottles of beer on the wall, 88 bottles of beer.\n" +
+//            "Take one down and pass around, 87 bottles of beer on the wall.\n" +
+//
+//            "87 bottles of beer on the wall, 87 bottles of beer.\n" +
+//            "Take one down and pass around, 86 bottles of beer on the wall.\n" +
+//
+//            "86 bottles of beer on the wall, 86 bottles of beer.\n" +
+//            "Take one down and pass around, 85 bottles of beer on the wall.\n" +
+//
+//            "85 bottles of beer on the wall, 85 bottles of beer.\n" +
+//            "Take one down and pass around, 84 bottles of beer on the wall.\n" +
+//
+//            "84 bottles of beer on the wall, 84 bottles of beer.\n" +
+//            "Take one down and pass around, 83 bottles of beer on the wall.\n" +
+//
+//            "83 bottles of beer on the wall, 83 bottles of beer.\n" +
+//            "Take one down and pass around, 82 bottles of beer on the wall.\n" +
+//
+//            "82 bottles of beer on the wall, 82 bottles of beer.\n" +
+//            "Take one down and pass around, 81 bottles of beer on the wall.\n" +
+//
+//            "81 bottles of beer on the wall, 81 bottles of beer.\n" +
+//            "Take one down and pass around, 80 bottles of beer on the wall.\n" +
+//
+//            "80 bottles of beer on the wall, 80 bottles of beer.\n" +
+//            "Take one down and pass around, 79 bottles of beer on the wall.\n" +
+//
+//            "79 bottles of beer on the wall, 79 bottles of beer.\n" +
+//            "Take one down and pass around, 78 bottles of beer on the wall.\n" +
+//
+//            "78 bottles of beer on the wall, 78 bottles of beer.\n" +
+//            "Take one down and pass around, 77 bottles of beer on the wall.\n" +
+//
+//            "77 bottles of beer on the wall, 77 bottles of beer.\n" +
+//            "Take one down and pass around, 76 bottles of beer on the wall.\n" +
+//
+//            "76 bottles of beer on the wall, 76 bottles of beer.\n" +
+//            "Take one down and pass around, 75 bottles of beer on the wall.\n" +
+//
+//            "75 bottles of beer on the wall, 75 bottles of beer.\n" +
+//            "Take one down and pass around, 74 bottles of beer on the wall.\n" +
+//
+//            "74 bottles of beer on the wall, 74 bottles of beer.\n" +
+//            "Take one down and pass around, 73 bottles of beer on the wall.\n" +
+//
+//            "73 bottles of beer on the wall, 73 bottles of beer.\n" +
+//            "Take one down and pass around, 72 bottles of beer on the wall.\n" +
+//
+//            "72 bottles of beer on the wall, 72 bottles of beer.\n" +
+//            "Take one down and pass around, 71 bottles of beer on the wall.\n" +
+//
+//            "71 bottles of beer on the wall, 71 bottles of beer.\n" +
+//            "Take one down and pass around, 70 bottles of beer on the wall.\n" +
+//
+//            "70 bottles of beer on the wall, 70 bottles of beer.\n" +
+//            "Take one down and pass around, 69 bottles of beer on the wall.\n" +
+//
+//            "69 bottles of beer on the wall, 69 bottles of beer.\n" +
+//            "Take one down and pass around, 68 bottles of beer on the wall.\n" +
+//
+//            "68 bottles of beer on the wall, 68 bottles of beer.\n" +
+//            "Take one down and pass around, 67 bottles of beer on the wall.\n" +
+//
+//            "67 bottles of beer on the wall, 67 bottles of beer.\n" +
+//            "Take one down and pass around, 66 bottles of beer on the wall.\n" +
+//
+//            "66 bottles of beer on the wall, 66 bottles of beer.\n" +
+//            "Take one down and pass around, 65 bottles of beer on the wall.\n" +
+//
+//            "65 bottles of beer on the wall, 65 bottles of beer.\n" +
+//            "Take one down and pass around, 64 bottles of beer on the wall.\n" +
+//
+//            "64 bottles of beer on the wall, 64 bottles of beer.\n" +
+//            "Take one down and pass around, 63 bottles of beer on the wall.\n" +
+//
+//            "63 bottles of beer on the wall, 63 bottles of beer.\n" +
+//            "Take one down and pass around, 62 bottles of beer on the wall.\n" +
+//
+//            "62 bottles of beer on the wall, 62 bottles of beer.\n" +
+//            "Take one down and pass around, 61 bottles of beer on the wall.\n" +
+//
+//            "61 bottles of beer on the wall, 61 bottles of beer.\n" +
+//            "Take one down and pass around, 60 bottles of beer on the wall.\n" +
+//
+//            "60 bottles of beer on the wall, 60 bottles of beer.\n" +
+//            "Take one down and pass around, 59 bottles of beer on the wall.\n" +
+//
+//            "59 bottles of beer on the wall, 59 bottles of beer.\n" +
+//            "Take one down and pass around, 58 bottles of beer on the wall.\n" +
+//
+//            "58 bottles of beer on the wall, 58 bottles of beer.\n" +
+//            "Take one down and pass around, 57 bottles of beer on the wall.\n" +
+//
+//            "57 bottles of beer on the wall, 57 bottles of beer.\n" +
+//            "Take one down and pass around, 56 bottles of beer on the wall.\n" +
+//
+//            "56 bottles of beer on the wall, 56 bottles of beer.\n" +
+//            "Take one down and pass around, 55 bottles of beer on the wall.\n" +
+//
+//            "55 bottles of beer on the wall, 55 bottles of beer.\n" +
+//            "Take one down and pass around, 54 bottles of beer on the wall.\n" +
+//
+//            "54 bottles of beer on the wall, 54 bottles of beer.\n" +
+//            "Take one down and pass around, 53 bottles of beer on the wall.\n" +
+//
+//            "53 bottles of beer on the wall, 53 bottles of beer.\n" +
+//            "Take one down and pass around, 52 bottles of beer on the wall.\n" +
+//
+//            "52 bottles of beer on the wall, 52 bottles of beer.\n" +
+//            "Take one down and pass around, 51 bottles of beer on the wall.\n" +
+//
+//            "51 bottles of beer on the wall, 51 bottles of beer.\n" +
+//            "Take one down and pass around, 50 bottles of beer on the wall.\n" +
+//
+//            "50 bottles of beer on the wall, 50 bottles of beer.\n" +
+//            "Take one down and pass around, 49 bottles of beer on the wall.\n" +
+//
+//            "49 bottles of beer on the wall, 49 bottles of beer.\n" +
+//            "Take one down and pass around, 48 bottles of beer on the wall.\n" +
+//
+//            "48 bottles of beer on the wall, 48 bottles of beer.\n" +
+//            "Take one down and pass around, 47 bottles of beer on the wall.\n" +
+//
+//            "47 bottles of beer on the wall, 47 bottles of beer.\n" +
+//            "Take one down and pass around, 46 bottles of beer on the wall.\n" +
+//
+//            "46 bottles of beer on the wall, 46 bottles of beer.\n" +
+//            "Take one down and pass around, 45 bottles of beer on the wall.\n" +
+//
+//            "45 bottles of beer on the wall, 45 bottles of beer.\n" +
+//            "Take one down and pass around, 44 bottles of beer on the wall.\n" +
+//
+//            "44 bottles of beer on the wall, 44 bottles of beer.\n" +
+//            "Take one down and pass around, 43 bottles of beer on the wall.\n" +
+//
+//            "43 bottles of beer on the wall, 43 bottles of beer.\n" +
+//            "Take one down and pass around, 42 bottles of beer on the wall.\n" +
+//
+//            "42 bottles of beer on the wall, 42 bottles of beer.\n" +
+//            "Take one down and pass around, 41 bottles of beer on the wall.\n" +
+//
+//            "41 bottles of beer on the wall, 41 bottles of beer.\n" +
+//            "Take one down and pass around, 40 bottles of beer on the wall.\n" +
+//
+//            "40 bottles of beer on the wall, 40 bottles of beer.\n" +
+//            "Take one down and pass around, 39 bottles of beer on the wall.\n" +
+//
+//            "39 bottles of beer on the wall, 39 bottles of beer.\n" +
+//            "Take one down and pass around, 38 bottles of beer on the wall.\n" +
+//
+//            "38 bottles of beer on the wall, 38 bottles of beer.\n" +
+//            "Take one down and pass around, 37 bottles of beer on the wall.\n" +
+//
+//            "37 bottles of beer on the wall, 37 bottles of beer.\n" +
+//            "Take one down and pass around, 36 bottles of beer on the wall.\n" +
+//
+//            "36 bottles of beer on the wall, 36 bottles of beer.\n" +
+//            "Take one down and pass around, 35 bottles of beer on the wall.\n" +
+//
+//            "35 bottles of beer on the wall, 35 bottles of beer.\n" +
+//            "Take one down and pass around, 34 bottles of beer on the wall.\n" +
+//
+//            "34 bottles of beer on the wall, 34 bottles of beer.\n" +
+//            "Take one down and pass around, 33 bottles of beer on the wall.\n" +
+//
+//            "33 bottles of beer on the wall, 33 bottles of beer.\n" +
+//            "Take one down and pass around, 32 bottles of beer on the wall.\n" +
+//
+//            "32 bottles of beer on the wall, 32 bottles of beer.\n" +
+//            "Take one down and pass around, 31 bottles of beer on the wall.\n" +
+//
+//            "31 bottles of beer on the wall, 31 bottles of beer.\n" +
+//            "Take one down and pass around, 30 bottles of beer on the wall.\n" +
+//
+//            "30 bottles of beer on the wall, 30 bottles of beer.\n" +
+//            "Take one down and pass around, 29 bottles of beer on the wall.\n" +
+//
+//            "29 bottles of beer on the wall, 29 bottles of beer.\n" +
+//            "Take one down and pass around, 28 bottles of beer on the wall.\n" +
+//
+//            "28 bottles of beer on the wall, 28 bottles of beer.\n" +
+//            "Take one down and pass around, 27 bottles of beer on the wall.\n" +
+//
+//            "27 bottles of beer on the wall, 27 bottles of beer.\n" +
+//            "Take one down and pass around, 26 bottles of beer on the wall.\n" +
+//
+//            "26 bottles of beer on the wall, 26 bottles of beer.\n" +
+//            "Take one down and pass around, 25 bottles of beer on the wall.\n" +
+//
+//            "25 bottles of beer on the wall, 25 bottles of beer.\n" +
+//            "Take one down and pass around, 24 bottles of beer on the wall.\n" +
+//
+//            "24 bottles of beer on the wall, 24 bottles of beer.\n" +
+//            "Take one down and pass around, 23 bottles of beer on the wall.\n" +
+//
+//            "23 bottles of beer on the wall, 23 bottles of beer.\n" +
+//            "Take one down and pass around, 22 bottles of beer on the wall.\n" +
+//
+//            "22 bottles of beer on the wall, 22 bottles of beer.\n" +
+//            "Take one down and pass around, 21 bottles of beer on the wall.\n" +
+//
+//            "21 bottles of beer on the wall, 21 bottles of beer.\n" +
+//            "Take one down and pass around, 20 bottles of beer on the wall.\n" +
+//
+//            "20 bottles of beer on the wall, 20 bottles of beer.\n" +
+//            "Take one down and pass around, 19 bottles of beer on the wall.\n" +
+//
+//            "19 bottles of beer on the wall, 19 bottles of beer.\n" +
+//            "Take one down and pass around, 18 bottles of beer on the wall.\n" +
+//
+//            "18 bottles of beer on the wall, 18 bottles of beer.\n" +
+//            "Take one down and pass around, 17 bottles of beer on the wall.\n" +
+//
+//            "17 bottles of beer on the wall, 17 bottles of beer.\n" +
+//            "Take one down and pass around, 16 bottles of beer on the wall.\n" +
+//
+//            "16 bottles of beer on the wall, 16 bottles of beer.\n" +
+//            "Take one down and pass around, 15 bottles of beer on the wall.\n" +
+//
+//            "15 bottles of beer on the wall, 15 bottles of beer.\n" +
+//            "Take one down and pass around, 14 bottles of beer on the wall.\n" +
+//
+//            "14 bottles of beer on the wall, 14 bottles of beer.\n" +
+//            "Take one down and pass around, 13 bottles of beer on the wall.\n" +
+//
+//            "13 bottles of beer on the wall, 13 bottles of beer.\n" +
+//            "Take one down and pass around, 12 bottles of beer on the wall.\n" +
+//
+//            "12 bottles of beer on the wall, 12 bottles of beer.\n" +
+//            "Take one down and pass around, 11 bottles of beer on the wall.\n" +
+//
+//            "11 bottles of beer on the wall, 11 bottles of beer.\n" +
+//            "Take one down and pass around, 10 bottles of beer on the wall.\n" +
+//
+//            "10 bottles of beer on the wall, 10 bottles of beer.\n" +
+//            "Take one down and pass around, 9 bottles of beer on the wall.\n" +
+//
+//            "9 bottles of beer on the wall, 9 bottles of beer.\n" +
+//            "Take one down and pass around, 8 bottles of beer on the wall.\n" +
+//
+//            "8 bottles of beer on the wall, 8 bottles of beer.\n" +
+//            "Take one down and pass around, 7 bottles of beer on the wall.\n" +
+//
+//            "7 bottles of beer on the wall, 7 bottles of beer.\n" +
+//            "Take one down and pass around, 6 bottles of beer on the wall.\n" +
+//
+//            "6 bottles of beer on the wall, 6 bottles of beer.\n" +
+//            "Take one down and pass around, 5 bottles of beer on the wall.\n" +
+//
+//            "5 bottles of beer on the wall, 5 bottles of beer.\n" +
+//            "Take one down and pass around, 4 bottles of beer on the wall.\n" +
+//
+//            "4 bottles of beer on the wall, 4 bottles of beer.\n" +
+//            "Take one down and pass around, 3 bottles of beer on the wall.\n" +
+//
+//            "3 bottles of beer on the wall, 3 bottles of beer.\n" +
+//            "Take one down and pass around, 2 bottles of beer on the wall.\n" +
+//
+//            "2 bottles of beer on the wall, 2 bottles of beer.\n" +
+//            "Take one down and pass around, 1 bottle of beer on the wall.\n" +
+//
+//            "1 bottle of beer on the wall, 1 bottle of beer.\n" +
+//            "Take one down and pass around, no more bottles of beer on the wall.\n" +
+//
+//            "No more bottles of beer on the wall, no more bottles of beer.\n" +
+//            "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
 
-            "98 bottles of beer on the wall, 98 bottles of beer.\n" +
-            "Take one down and pass around, 97 bottles of beer on the wall.\n" +
 
-            "97 bottles of beer on the wall, 97 bottles of beer.\n" +
-            "Take one down and pass around, 96 bottles of beer on the wall.\n" +
-
-            "96 bottles of beer on the wall, 96 bottles of beer.\n" +
-            "Take one down and pass around, 95 bottles of beer on the wall.\n" +
-
-            "95 bottles of beer on the wall, 95 bottles of beer.\n" +
-            "Take one down and pass around, 94 bottles of beer on the wall.\n" +
-
-            "94 bottles of beer on the wall, 94 bottles of beer.\n" +
-            "Take one down and pass around, 93 bottles of beer on the wall.\n" +
-
-            "93 bottles of beer on the wall, 93 bottles of beer.\n" +
-            "Take one down and pass around, 92 bottles of beer on the wall.\n" +
-
-            "92 bottles of beer on the wall, 92 bottles of beer.\n" +
-            "Take one down and pass around, 91 bottles of beer on the wall.\n" +
-
-            "91 bottles of beer on the wall, 91 bottles of beer.\n" +
-            "Take one down and pass around, 90 bottles of beer on the wall.\n" +
-
-            "90 bottles of beer on the wall, 90 bottles of beer.\n" +
-            "Take one down and pass around, 89 bottles of beer on the wall.\n" +
-
-            "89 bottles of beer on the wall, 89 bottles of beer.\n" +
-            "Take one down and pass around, 88 bottles of beer on the wall.\n" +
-
-            "88 bottles of beer on the wall, 88 bottles of beer.\n" +
-            "Take one down and pass around, 87 bottles of beer on the wall.\n" +
-
-            "87 bottles of beer on the wall, 87 bottles of beer.\n" +
-            "Take one down and pass around, 86 bottles of beer on the wall.\n" +
-
-            "86 bottles of beer on the wall, 86 bottles of beer.\n" +
-            "Take one down and pass around, 85 bottles of beer on the wall.\n" +
-
-            "85 bottles of beer on the wall, 85 bottles of beer.\n" +
-            "Take one down and pass around, 84 bottles of beer on the wall.\n" +
-
-            "84 bottles of beer on the wall, 84 bottles of beer.\n" +
-            "Take one down and pass around, 83 bottles of beer on the wall.\n" +
-
-            "83 bottles of beer on the wall, 83 bottles of beer.\n" +
-            "Take one down and pass around, 82 bottles of beer on the wall.\n" +
-
-            "82 bottles of beer on the wall, 82 bottles of beer.\n" +
-            "Take one down and pass around, 81 bottles of beer on the wall.\n" +
-
-            "81 bottles of beer on the wall, 81 bottles of beer.\n" +
-            "Take one down and pass around, 80 bottles of beer on the wall.\n" +
-
-            "80 bottles of beer on the wall, 80 bottles of beer.\n" +
-            "Take one down and pass around, 79 bottles of beer on the wall.\n" +
-
-            "79 bottles of beer on the wall, 79 bottles of beer.\n" +
-            "Take one down and pass around, 78 bottles of beer on the wall.\n" +
-
-            "78 bottles of beer on the wall, 78 bottles of beer.\n" +
-            "Take one down and pass around, 77 bottles of beer on the wall.\n" +
-
-            "77 bottles of beer on the wall, 77 bottles of beer.\n" +
-            "Take one down and pass around, 76 bottles of beer on the wall.\n" +
-
-            "76 bottles of beer on the wall, 76 bottles of beer.\n" +
-            "Take one down and pass around, 75 bottles of beer on the wall.\n" +
-
-            "75 bottles of beer on the wall, 75 bottles of beer.\n" +
-            "Take one down and pass around, 74 bottles of beer on the wall.\n" +
-
-            "74 bottles of beer on the wall, 74 bottles of beer.\n" +
-            "Take one down and pass around, 73 bottles of beer on the wall.\n" +
-
-            "73 bottles of beer on the wall, 73 bottles of beer.\n" +
-            "Take one down and pass around, 72 bottles of beer on the wall.\n" +
-
-            "72 bottles of beer on the wall, 72 bottles of beer.\n" +
-            "Take one down and pass around, 71 bottles of beer on the wall.\n" +
-
-            "71 bottles of beer on the wall, 71 bottles of beer.\n" +
-            "Take one down and pass around, 70 bottles of beer on the wall.\n" +
-
-            "70 bottles of beer on the wall, 70 bottles of beer.\n" +
-            "Take one down and pass around, 69 bottles of beer on the wall.\n" +
-
-            "69 bottles of beer on the wall, 69 bottles of beer.\n" +
-            "Take one down and pass around, 68 bottles of beer on the wall.\n" +
-
-            "68 bottles of beer on the wall, 68 bottles of beer.\n" +
-            "Take one down and pass around, 67 bottles of beer on the wall.\n" +
-
-            "67 bottles of beer on the wall, 67 bottles of beer.\n" +
-            "Take one down and pass around, 66 bottles of beer on the wall.\n" +
-
-            "66 bottles of beer on the wall, 66 bottles of beer.\n" +
-            "Take one down and pass around, 65 bottles of beer on the wall.\n" +
-
-            "65 bottles of beer on the wall, 65 bottles of beer.\n" +
-            "Take one down and pass around, 64 bottles of beer on the wall.\n" +
-
-            "64 bottles of beer on the wall, 64 bottles of beer.\n" +
-            "Take one down and pass around, 63 bottles of beer on the wall.\n" +
-
-            "63 bottles of beer on the wall, 63 bottles of beer.\n" +
-            "Take one down and pass around, 62 bottles of beer on the wall.\n" +
-
-            "62 bottles of beer on the wall, 62 bottles of beer.\n" +
-            "Take one down and pass around, 61 bottles of beer on the wall.\n" +
-
-            "61 bottles of beer on the wall, 61 bottles of beer.\n" +
-            "Take one down and pass around, 60 bottles of beer on the wall.\n" +
-
-            "60 bottles of beer on the wall, 60 bottles of beer.\n" +
-            "Take one down and pass around, 59 bottles of beer on the wall.\n" +
-
-            "59 bottles of beer on the wall, 59 bottles of beer.\n" +
-            "Take one down and pass around, 58 bottles of beer on the wall.\n" +
-
-            "58 bottles of beer on the wall, 58 bottles of beer.\n" +
-            "Take one down and pass around, 57 bottles of beer on the wall.\n" +
-
-            "57 bottles of beer on the wall, 57 bottles of beer.\n" +
-            "Take one down and pass around, 56 bottles of beer on the wall.\n" +
-
-            "56 bottles of beer on the wall, 56 bottles of beer.\n" +
-            "Take one down and pass around, 55 bottles of beer on the wall.\n" +
-
-            "55 bottles of beer on the wall, 55 bottles of beer.\n" +
-            "Take one down and pass around, 54 bottles of beer on the wall.\n" +
-
-            "54 bottles of beer on the wall, 54 bottles of beer.\n" +
-            "Take one down and pass around, 53 bottles of beer on the wall.\n" +
-
-            "53 bottles of beer on the wall, 53 bottles of beer.\n" +
-            "Take one down and pass around, 52 bottles of beer on the wall.\n" +
-
-            "52 bottles of beer on the wall, 52 bottles of beer.\n" +
-            "Take one down and pass around, 51 bottles of beer on the wall.\n" +
-
-            "51 bottles of beer on the wall, 51 bottles of beer.\n" +
-            "Take one down and pass around, 50 bottles of beer on the wall.\n" +
-
-            "50 bottles of beer on the wall, 50 bottles of beer.\n" +
-            "Take one down and pass around, 49 bottles of beer on the wall.\n" +
-
-            "49 bottles of beer on the wall, 49 bottles of beer.\n" +
-            "Take one down and pass around, 48 bottles of beer on the wall.\n" +
-
-            "48 bottles of beer on the wall, 48 bottles of beer.\n" +
-            "Take one down and pass around, 47 bottles of beer on the wall.\n" +
-
-            "47 bottles of beer on the wall, 47 bottles of beer.\n" +
-            "Take one down and pass around, 46 bottles of beer on the wall.\n" +
-
-            "46 bottles of beer on the wall, 46 bottles of beer.\n" +
-            "Take one down and pass around, 45 bottles of beer on the wall.\n" +
-
-            "45 bottles of beer on the wall, 45 bottles of beer.\n" +
-            "Take one down and pass around, 44 bottles of beer on the wall.\n" +
-
-            "44 bottles of beer on the wall, 44 bottles of beer.\n" +
-            "Take one down and pass around, 43 bottles of beer on the wall.\n" +
-
-            "43 bottles of beer on the wall, 43 bottles of beer.\n" +
-            "Take one down and pass around, 42 bottles of beer on the wall.\n" +
-
-            "42 bottles of beer on the wall, 42 bottles of beer.\n" +
-            "Take one down and pass around, 41 bottles of beer on the wall.\n" +
-
-            "41 bottles of beer on the wall, 41 bottles of beer.\n" +
-            "Take one down and pass around, 40 bottles of beer on the wall.\n" +
-
-            "40 bottles of beer on the wall, 40 bottles of beer.\n" +
-            "Take one down and pass around, 39 bottles of beer on the wall.\n" +
-
-            "39 bottles of beer on the wall, 39 bottles of beer.\n" +
-            "Take one down and pass around, 38 bottles of beer on the wall.\n" +
-
-            "38 bottles of beer on the wall, 38 bottles of beer.\n" +
-            "Take one down and pass around, 37 bottles of beer on the wall.\n" +
-
-            "37 bottles of beer on the wall, 37 bottles of beer.\n" +
-            "Take one down and pass around, 36 bottles of beer on the wall.\n" +
-
-            "36 bottles of beer on the wall, 36 bottles of beer.\n" +
-            "Take one down and pass around, 35 bottles of beer on the wall.\n" +
-
-            "35 bottles of beer on the wall, 35 bottles of beer.\n" +
-            "Take one down and pass around, 34 bottles of beer on the wall.\n" +
-
-            "34 bottles of beer on the wall, 34 bottles of beer.\n" +
-            "Take one down and pass around, 33 bottles of beer on the wall.\n" +
-
-            "33 bottles of beer on the wall, 33 bottles of beer.\n" +
-            "Take one down and pass around, 32 bottles of beer on the wall.\n" +
-
-            "32 bottles of beer on the wall, 32 bottles of beer.\n" +
-            "Take one down and pass around, 31 bottles of beer on the wall.\n" +
-
-            "31 bottles of beer on the wall, 31 bottles of beer.\n" +
-            "Take one down and pass around, 30 bottles of beer on the wall.\n" +
-
-            "30 bottles of beer on the wall, 30 bottles of beer.\n" +
-            "Take one down and pass around, 29 bottles of beer on the wall.\n" +
-
-            "29 bottles of beer on the wall, 29 bottles of beer.\n" +
-            "Take one down and pass around, 28 bottles of beer on the wall.\n" +
-
-            "28 bottles of beer on the wall, 28 bottles of beer.\n" +
-            "Take one down and pass around, 27 bottles of beer on the wall.\n" +
-
-            "27 bottles of beer on the wall, 27 bottles of beer.\n" +
-            "Take one down and pass around, 26 bottles of beer on the wall.\n" +
-
-            "26 bottles of beer on the wall, 26 bottles of beer.\n" +
-            "Take one down and pass around, 25 bottles of beer on the wall.\n" +
-
-            "25 bottles of beer on the wall, 25 bottles of beer.\n" +
-            "Take one down and pass around, 24 bottles of beer on the wall.\n" +
-
-            "24 bottles of beer on the wall, 24 bottles of beer.\n" +
-            "Take one down and pass around, 23 bottles of beer on the wall.\n" +
-
-            "23 bottles of beer on the wall, 23 bottles of beer.\n" +
-            "Take one down and pass around, 22 bottles of beer on the wall.\n" +
-
-            "22 bottles of beer on the wall, 22 bottles of beer.\n" +
-            "Take one down and pass around, 21 bottles of beer on the wall.\n" +
-
-            "21 bottles of beer on the wall, 21 bottles of beer.\n" +
-            "Take one down and pass around, 20 bottles of beer on the wall.\n" +
-
-            "20 bottles of beer on the wall, 20 bottles of beer.\n" +
-            "Take one down and pass around, 19 bottles of beer on the wall.\n" +
-
-            "19 bottles of beer on the wall, 19 bottles of beer.\n" +
-            "Take one down and pass around, 18 bottles of beer on the wall.\n" +
-
-            "18 bottles of beer on the wall, 18 bottles of beer.\n" +
-            "Take one down and pass around, 17 bottles of beer on the wall.\n" +
-
-            "17 bottles of beer on the wall, 17 bottles of beer.\n" +
-            "Take one down and pass around, 16 bottles of beer on the wall.\n" +
-
-            "16 bottles of beer on the wall, 16 bottles of beer.\n" +
-            "Take one down and pass around, 15 bottles of beer on the wall.\n" +
-
-            "15 bottles of beer on the wall, 15 bottles of beer.\n" +
-            "Take one down and pass around, 14 bottles of beer on the wall.\n" +
-
-            "14 bottles of beer on the wall, 14 bottles of beer.\n" +
-            "Take one down and pass around, 13 bottles of beer on the wall.\n" +
-
-            "13 bottles of beer on the wall, 13 bottles of beer.\n" +
-            "Take one down and pass around, 12 bottles of beer on the wall.\n" +
-
-            "12 bottles of beer on the wall, 12 bottles of beer.\n" +
-            "Take one down and pass around, 11 bottles of beer on the wall.\n" +
-
-            "11 bottles of beer on the wall, 11 bottles of beer.\n" +
-            "Take one down and pass around, 10 bottles of beer on the wall.\n" +
-
-            "10 bottles of beer on the wall, 10 bottles of beer.\n" +
-            "Take one down and pass around, 9 bottles of beer on the wall.\n" +
-
-            "9 bottles of beer on the wall, 9 bottles of beer.\n" +
-            "Take one down and pass around, 8 bottles of beer on the wall.\n" +
-
-            "8 bottles of beer on the wall, 8 bottles of beer.\n" +
-            "Take one down and pass around, 7 bottles of beer on the wall.\n" +
-
-            "7 bottles of beer on the wall, 7 bottles of beer.\n" +
-            "Take one down and pass around, 6 bottles of beer on the wall.\n" +
-
-            "6 bottles of beer on the wall, 6 bottles of beer.\n" +
-            "Take one down and pass around, 5 bottles of beer on the wall.\n" +
-
-            "5 bottles of beer on the wall, 5 bottles of beer.\n" +
-            "Take one down and pass around, 4 bottles of beer on the wall.\n" +
-
-            "4 bottles of beer on the wall, 4 bottles of beer.\n" +
-            "Take one down and pass around, 3 bottles of beer on the wall.\n" +
-
-            "3 bottles of beer on the wall, 3 bottles of beer.\n" +
-            "Take one down and pass around, 2 bottles of beer on the wall.\n" +
-
-            "2 bottles of beer on the wall, 2 bottles of beer.\n" +
-            "Take one down and pass around, 1 bottle of beer on the wall.\n" +
-
-            "1 bottle of beer on the wall, 1 bottle of beer.\n" +
-            "Take one down and pass around, no more bottles of beer on the wall.\n" +
-
-            "No more bottles of beer on the wall, no more bottles of beer.\n" +
-            "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
-    }
-}
