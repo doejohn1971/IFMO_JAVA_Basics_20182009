@@ -38,7 +38,7 @@ public class WarAndPeaceExercise {
             res_array.add(string);
             vocabulary.remove(max.getKey());
         }
-
+        int k=0;
         String res_string="";
         for(String s:res_array) {
             res_string+=s+"\n";
